@@ -1,0 +1,66 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Navigation from "../components/Navigation.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+
+const projects = [
+  {
+    title: "kiaiGPT",
+    subtitle: "creator and mantainer (sep 2023 - present)",
+    link: "https://kiaigpt.ai",
+    description:
+      "kiaiGPT provides pre-built prompts for common entrepreneurship tasks. It allows you to easily create a business plan, develop a marketing strategy, and generate ad copy.",
+    achievements: [
+      "Grew project to 3K users organically",
+      "Created an admin interface for customer configuration",
+      "Expanded the project to 3 internatinal customers",
+    ],
+    technologies: [
+      "Typescript",
+      "Next.js",
+      "TRPC",
+      "Drizzle",
+      "Tailwind CSS",
+      "MongoDB",
+    ],
+  },
+  {
+    title: "pika",
+    subtitle: "creator and mantainer (nov 2022 - present)",
+    link: "https://www.github.com/mbcrocci/pika",
+    description:
+      "pika is a simple, lightweight, and fast RabbitMQ client for Go. It provides a simpler abstration while implementing by default connection and channel management, retries and error handling.",
+    achievements: [
+      "Deployed in production for over a year on over 30 services",
+      "Implemented connection and channel management, retries and error handling",
+    ],
+    technologies: ["Go", "RabbitMQ"],
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body
+    class="min-h-screen bg-black text-zinc-300 p-8 font-mono flex justify-center"
+  >
+    <div class="w-full max-w-4xl">
+      {/* Navigation */}
+      <Navigation />
+
+      <h1
+        class="border-l-2 pl-4 -ml-5 border-emerald-500 text-4xl font-bold mb-8 flex items-center"
+      >
+        Projects
+      </h1>
+
+      <div class="flex flex-col space-y-8">
+        {projects.map((p) => <ProjectCard {...p} />)}
+      </div>
+    </div>
+  </body>
+</html>

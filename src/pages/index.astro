@@ -1,50 +1,232 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import BaseHead from "../components/BaseHead.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+import Navigation from "../components/Navigation.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { getCollection } from "astro:content";
+import "@fontsource/geist-mono";
+
+const posts = (await getCollection("blog"))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 5);
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body
+    class="antialiased min-h-screen bg-black text-zinc-300 p-8 font-mono flex justify-center"
+  >
+    <div class="w-full max-w-4xl">
+      {/* Navigation */}
+      <Navigation />
+
+      {/* Header */}
+      <header class="mb-8">
+        <h1 class="text-4xl font-bold text-white mb-4">Maurizio Crocci</h1>
+        <div class="flex items-center gap-2 text-sm mb-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <g
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+            >
+              <path
+                d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"
+              ></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </g>
+          </svg>
+          <span>Coimbra, Portugal</span>
+        </div>
+        <div class="flex items-center gap-2 text-sm">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <g
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+            >
+              <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              <rect width="20" height="14" x="2" y="6" rx="2"></rect>
+            </g>
+          </svg>
+          <span>Staff Software Engineer @ mymetrics.ai</span>
+        </div>
+      </header>
+
+      {/* Bio */}
+      <p class="mb-12 leading-relaxed max-w-2xl">
+        I'm a 28 y/o coder. I love building things, solving user problems and
+        promotting inter-team collaboration. I enjoy learning new languages,
+        data structures and all things back-end. I'm also a big fan of open
+        source and live on the terminal. If I'm not coding, I'm probably
+        mountain biking, skating or playing with my cats.
+      </p>
+
+      {/* Work Section */}
+      <section class="mb-12">
+        <h2
+          class="border-l-2 pl-4 -ml-5 border-emerald-500 text-2xl font-bold mb-6 flex items-center"
+        >
+          Work
+        </h2>
+
+        <div class="mb-8">
+          <a href="https://mymetrics.ai"
+            ><h3 class="text-white hover:text-emerald-500 mb-1">
+              mymetrics.ai
+            </h3></a
+          >
+          <p class="text-sm text-zinc-500 mb-2">
+            Staff Sofware Engineer (sep 2024 - present)
+          </p>
+          <p>
+            Leading engineering to build AI flows for analyzing entrepeneurial
+            data.
+          </p>
+        </div>
+
+        <div class="mb-8">
+          <a href="https://launchsoft.com"
+            ><h3 class="text-white hover:text-emerald-500 mb-1">
+              Launchsoft
+            </h3></a
+          >
+          <p class="text-sm text-zinc-500 mb-2">
+            Senior Sofware Engineer (aug 2021 - sep 2024)
+          </p>
+          <p>
+            Designed and implemented a distributed system to aggregate data from
+            over 30 sources and provide a unified view of the data.
+          </p>
+        </div>
+
+        <div class="mb-8">
+          <a href="https://solutions4lawyers.pt"
+            ><h3 class="text-white hover:text-emerald-500 mb-1">
+              Solutions4Lawyers
+            </h3></a
+          >
+          <p class="text-sm text-zinc-500 mb-2">
+            Sofware Engineer (nov 2019 - aug 2021)
+          </p>
+          <p>
+            Helped develop a web-based platform for lawyers to manage their
+            client's cases and their invoicing.<p></p>
+          </p>
+        </div>
+
+        {/* Projects Section */}
+        <section class="mb-12">
+          <h2
+            class="border-l-2 pl-4 -ml-5 border-emerald-500 text-2xl font-bold mb-6 flex items-center"
+          >
+            Projects
+          </h2>
+
+          <div class="mb-8">
+            <a href="https://kiaigpt.ai"
+              ><h3 class="text-white hover:text-emerald-500 mb-1">
+                kiaiGPT
+              </h3></a
+            >
+            <p class="text-sm text-zinc-500 mb-2">creator and maintainer</p>
+            <p>
+              chatbot with premade prompts to help new online-entrepeneurs get
+              started with their businesses and common task for established
+              ones.
+            </p>
+
+            <div class="mb-8">
+              <a href="https://github.com/mbcrocci/pika"
+                ><h3 class="text-white hover:text-emerald-500 mb-1">Pika</h3></a
+              >
+              <p class="text-sm text-zinc-500 mb-2">creator and maintainer</p>
+              <p>
+                Open-source project that wraps the official RabbitMQ client for
+                Go. It provides a simpler abstration while implementing by
+                default connection and channel management, retries and error
+                handling.
+              </p>
+            </div>
+
+            <a href="/projects" class="text-emerald-500 hover:underline">
+              all projects →
+            </a>
+          </div>
+
+          {/* Blog Section */}
+          <section class="mb-12">
+            <h2
+              class="border-l-2 pl-4 -ml-5 border-emerald-500 text-2xl font-bold mb-6 flex items-center"
+            >
+              Blog
+            </h2>
+
+            <div class="space-y-4">
+              {
+                posts.map((post) => (
+                  <div class="flex justify-between">
+                    <a href={`/blog/${post.id}`} class="hover:text-white">
+                      {post.data.title}
+                    </a>
+                    <span class="text-zinc-600">
+                      <FormattedDate date={post.data.pubDate} />
+                    </span>
+                  </div>
+                ))
+              }
+            </div>
+
+            <a href="/blog" class="block mt-6 text-emerald-500 hover:underline">
+              all posts →
+            </a>
+          </section>
+
+          {/* as Section */}
+          <section>
+            <h2
+              class="border-l-2 pl-4 -ml-5 border-emerald-500 text-2xl font-bold mb-6 flex items-center"
+            >
+              Links
+            </h2>
+            <div class="space-x-4">
+              <a href="mailto:mbcrocci@gmail.com" class="hover:text-white">
+                email
+              </a>
+              <a href="https://x.com/mbcrocci" class="hover:text-white">
+                x.com
+              </a>
+              <a href="https://github.com/mbcrocci" class="hover:text-white">
+                github
+              </a>
+              <a
+                href="https://www.linkedin.com/in/maurizio-crocci"
+                class="hover:text-white"
+              >
+                linkedin
+              </a>
+              <a href="/calendar" class="hover:text-white">book a call</a>
+            </div>
+          </section>
+        </section>
+      </section>
+    </div>
+  </body>
 </html>
