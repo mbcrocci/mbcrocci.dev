@@ -1,6 +1,4 @@
 ---
-import BaseHead from "../../components/BaseHead.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
 import {
   getCollection,
   type CollectionEntry,
@@ -8,8 +6,8 @@ import {
 } from "astro:content";
 import FormattedDate from "../../components/FormattedDate.astro";
 import type {} from "astro:content";
-import Navigation from "../../components/Navigation.astro";
 import "@fontsource/geist-mono";
+import Page from "../../components/Page.astro";
 
 const posts = (await getCollection("blog")).sort(
   (a: CollectionEntry<CollectionKey>, b: CollectionEntry<CollectionKey>) =>
@@ -17,29 +15,14 @@ const posts = (await getCollection("blog")).sort(
 );
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <body>
-    <div
-      class="min-h-screen bg-black text-zinc-300 p-8 font-mono flex justify-center"
-    >
-      <div class="w-full max-w-4xl">
-        {/* Navigation */}
-        <Navigation />
+<Page>
+  <div class="p-8">
+    {/* Blog Header */}
+    <h1 class="text-4xl font-bold mb-8 flex items-center">Blog</h1>
 
-        {/* Blog Header */}
-        <h1
-          class="border-l-2 pl-4 -ml-5 border-emerald-500 text-4xl font-bold mb-8 flex items-center"
-        >
-          Blog
-        </h1>
-
-        {/* Keyboard Navigation Hint */}
-        {
-          /*
+    {/* Keyboard Navigation Hint */}
+    {
+      /*
         <p class="text-zinc-500 mb-8 text-sm items-center flex gap-1">
           press <kbd
             class="border border-zinc-700 px-1.5 py-0.5 rounded text-zinc-400"
@@ -89,22 +72,20 @@ const posts = (await getCollection("blog")).sort(
           </span> to navigate
         </p>
 */
-        }
+    }
 
-        {/* Blog Posts List */}
-        <div class="space-y-4">
-          {
-            posts.map((post) => (
-              <div class="flex justify-between hover:text-white">
-                <a href={`/blog/${post.id}`}>{post.data.title}</a>
-                <span class="text-zinc-600">
-                  <FormattedDate date={post.data.pubDate} />
-                </span>
-              </div>
-            ))
-          }
-        </div>
-      </div>
+    {/* Blog Posts List */}
+    <div class="space-y-4">
+      {
+        posts.map((post) => (
+          <div class="flex justify-between hover:text-white">
+            <a href={`/blog/${post.id}`}>{post.data.title}</a>
+            <span class="text-zinc-600">
+              <FormattedDate date={post.data.pubDate} />
+            </span>
+          </div>
+        ))
+      }
     </div>
-  </body>
-</html>
+  </div>
+</Page>

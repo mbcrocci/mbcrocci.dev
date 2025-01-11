@@ -3,33 +3,37 @@ const { title, subtitle, link, description, achievements, technologies } =
   Astro.props;
 ---
 
-<div
-  class="flex flex-col space-y-4 p-8 border border-1 border-zinc-700 group hover:border-emerald-500 relative"
->
-  <a
-    class="absolute top-2 right-2 group-hover:text-emerald-500 hover:cursor-pointer"
-    href={link}
-    target="_blank"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      ><path
-        fill="none"
-        stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M15 3h6v6m-11 5L21 3m-3 10v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-      ></path></svg
-    >
-  </a>
-  <h2 class="font-bold text-2xl group-hover:text-emerald-500">{title}</h2>
-  <span class="text-zinc-400">
-    {subtitle}
-  </span>
+<div class="flex flex-col space-y-8 p-8">
+  <div class="flex flex-col gap-2">
+    <div class="flex items-center justify-between group">
+      <h2 class="font-bold text-3xl group-hover:text-emerald-500">{title}</h2>
+
+      <a
+        class="group-hover:text-emerald-500 hover:cursor-pointer"
+        href={link}
+        target="_blank"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          ><path
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 3h6v6m-11 5L21 3m-3 10v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+          ></path>
+        </svg>
+      </a>
+    </div>
+    <span class="text-zinc-400">
+      {subtitle}
+    </span>
+  </div>
+
   <p class="text-white">
     {description}
   </p>

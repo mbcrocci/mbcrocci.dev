@@ -1,31 +1,33 @@
-<nav class="mb-12">
-  <ul class="flex gap-4">
-    <li>[h] <a href="/" class="hover:text-white">home</a></li>
-    <li>[b] <a href="/blog" class="hover:text-white">blog</a></li>
+<nav class="p-8 border-b text-lg font-semibold">
+  <ul class="flex gap-12">
+    <li>[h] <a href="/" class="hover:text-white">Home</a></li>
+    <li>[b] <a href="/blog" class="hover:text-white">Blog</a></li>
     <li>
-      [p] <a href="/projects" class="hover:text-white">projects</a>
+      [p] <a href="/projects" class="hover:text-white">Projects</a>
     </li>
   </ul>
+
+  <script>
+    document.addEventListener("keydown", (event) => {
+      // Check if no input/textarea is focused to avoid interference with typing
+      if (
+        document.activeElement?.tagName === "INPUT" ||
+        document.activeElement?.tagName === "TEXTAREA"
+      ) {
+        return;
+      }
+
+      switch (event.key.toLowerCase()) {
+        case "h":
+          window.location.href = "/";
+          break;
+        case "b":
+          window.location.href = "/blog";
+          break;
+        case "p":
+          window.location.href = "/projects";
+          break;
+      }
+    });
+  </script>
 </nav>
-
-<script>
-  document.addEventListener('keydown', (event) => {
-    // Check if no input/textarea is focused to avoid interference with typing
-    if (document.activeElement?.tagName === 'INPUT' || 
-        document.activeElement?.tagName === 'TEXTAREA') {
-      return;
-    }
-
-    switch (event.key.toLowerCase()) {
-      case 'h':
-        window.location.href = '/';
-        break;
-      case 'b':
-        window.location.href = '/blog';
-        break;
-      case 'p':
-        window.location.href = '/projects';
-        break;
-    }
-  });
-</script>

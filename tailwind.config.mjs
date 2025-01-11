@@ -6,7 +6,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        mono: ["Geist Mono", ...defaultTheme.fontFamily.mono],
+        mono: ["IBM Plex Mono", ...defaultTheme.fontFamily.mono],
       },
     },
   },
