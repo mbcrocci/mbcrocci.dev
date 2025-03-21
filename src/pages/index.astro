@@ -61,7 +61,7 @@ const posts = (await getCollection("blog"))
     </div>
 
     {/* Bio */}
-    <p class="mt-8 leading-relaxed max-w-2xl">
+    <p class="mt-8 leading-relaxed">
       I'm a 28 y/o coder. I love building things, solving user problems and
       promotting inter-team collaboration. I enjoy learning new languages, data
       structures and all things back-end. I'm also a big fan of open source and
@@ -191,3 +191,14 @@ const posts = (await getCollection("blog"))
     </div>
   </Section>
 </Page>
+
+<!-- Lumens Pixel Script  Start -->
+<script>
+!function(l,e,u,s,p){l.lspx||(p=l.lspx=function(){p.callMethod?p.callMethod.apply(p,arguments):p.queue.push(arguments)},l._lspx||(l._lspx=p),l.lspxurl=s,p.push=p,p.loaded=!0,p.version="2.0",p.queue=[],p.callMethod=function(e,...u){let s=l.lspxurl.includes("?")?"&":"?";"init"===e?l.lspxurl+=s+"id="+u[0]:"track"===e?l.lspxurl+=s+"ev="+u[0]:"title"===e?l.lspxurl+=s+"t="+u[0]:"source"===e?l.lspxurl+=s+"s="+u[0]:"reference"===e&&(l.lspxurl+=s+"r="+u[0])},setTimeout(function e(){for(;p.queue.length>0;){let u=p.queue.shift();p.callMethod.apply(p,u)}if(!l.pixelSent){if(!(l.lspxurl.includes("id")&&l.lspxurl.includes("ev")))return;new Image(0,0).src=l.lspxurl,l.pixelSent=!0}},0))}(window,document,"script","http://localhost:3000/api/pixels/0195b958-7b25-752e-bde9-8862aa6ec81d/ingest");
+lspx("init", "0195b958-7b25-752e-bde9-8862aa6ec81d");
+lspx("track", "visit");
+</script>
+<noscript>
+  <img height="0" width="0" style="display:none;" src="http://localhost:3000/api/pixels/0195b958-7b25-752e-bde9-8862aa6ec81d/ingest?id=0195b958-7b25-752e-bde9-8862aa6ec81d&ev=visit"/>
+</noscript>
+<!-- Lumens Pixel Script  END -->
